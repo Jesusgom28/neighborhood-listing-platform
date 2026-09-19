@@ -1,0 +1,10 @@
+Lab 1 - Development Environment Setup
+
+Node version:
+v24.21.0
+
+npm version:
+11.19.0
+
+Git version:
+git version 2.42.0.windows.2
