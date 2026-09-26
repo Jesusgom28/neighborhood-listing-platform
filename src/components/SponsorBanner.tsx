@@ -6,7 +6,7 @@ interface SponsorBannerProps {
 
 export default function SponsorBanner({ sponsor }: SponsorBannerProps) {
   return (
-    <aside className="rounded-lg border bg-gray-50 p-4">
+    <aside className="rounded-lg border bg-gray-50 p-4 text-gray-900">
       <p className="text-sm font-semibold uppercase">Sponsored</p>
 
       <h2 className="mt-1 text-lg font-semibold">{sponsor.name}</h2>

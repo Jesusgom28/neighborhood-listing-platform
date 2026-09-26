@@ -7,7 +7,7 @@ interface PropertyCardProps {
 
 export default function PropertyCard({ property }: PropertyCardProps) {
   return (
-    <article className="overflow-hidden rounded-lg border bg-white shadow-sm">
+    <article className="overflow-hidden rounded-lg border bg-white text-gray-900 shadow-sm">
       <Image
         src={property.imageUrl}
         alt={`${property.title} at ${property.address}, ${property.city}`}

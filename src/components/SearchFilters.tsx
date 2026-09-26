@@ -1,6 +1,6 @@
 export default function SearchFilters() {
   return (
-    <form className="rounded-lg border bg-gray-50 p-4">
+    <form className="rounded-lg border bg-gray-50 p-4 text-gray-900">
       <h2 className="text-lg font-semibold">Search Filters</h2>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -39,7 +39,7 @@ export default function SearchFilters() {
 
       <button
         type="submit"
-        className="mt-4 rounded bg-blue-700 px-4 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        className="mt-1 w-full rounded border bg-white p-2 text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       >
         Search properties
       </button>
