@@ -2,39 +2,34 @@ import PropertyCard from "@/components/PropertyCard";
 import SearchFilters from "@/components/SearchFilters";
 import SponsorBanner from "@/components/SponsorBanner";
 import type { Property, Sponsor } from "@/types";
+import { validateProperty } from "@/lib/validateProperty";
+import generatedProperties from "../../data/generated/properties.json";
 
-const properties: Property[] = [
-  {
-    id: 1,
-    title: "Sunny Family Home",
-    address: "124 Maple Street",
-    city: "Los Angeles, CA",
-    price: 650000,
-    bedrooms: 3,
-    bathrooms: 2,
-    imageUrl: "/house-1.svg",
-  },
-  {
-    id: 2,
-    title: "Modern City Home",
-    address: "850 Grand Avenue",
-    city: "Los Angeles, CA",
-    price: 825000,
-    bedrooms: 2,
-    bathrooms: 2,
-    imageUrl: "/house-2.svg",
-  },
-  {
-    id: 3,
-    title: "Spacious Neighborhood Home",
-    address: "441 Oak Drive",
-    city: "Los Angeles, CA",
-    price: 975000,
-    bedrooms: 4,
-    bathrooms: 3,
-    imageUrl: "/house-3.svg",
-  },
-];
+const properties: Property[] = generatedProperties.flatMap((record) => {
+  const result = validateProperty(record);
+
+  if (!result.valid) {
+    console.error(
+      `Property ${record.property_id ?? "unknown"} failed validation:`,
+      result.errors
+    );
+
+    return [];
+  }
+
+  return [
+    {
+      id: record.property_id,
+      title: `${record.bedrooms} Bedroom Home`,
+      address: record.address.street,
+      city: `${record.address.city}, ${record.address.state}`,
+      price: record.price,
+      bedrooms: record.bedrooms,
+      bathrooms: record.bathrooms,
+      imageUrl: "/house-1.svg",
+    },
+  ];
+});
 
 const sponsor: Sponsor = {
   id: 1,

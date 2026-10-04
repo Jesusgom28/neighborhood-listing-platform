@@ -1,0 +1,77 @@
+[
+  {
+    "property_id": 1,
+    "address": {
+      "street": "125 Maple Street",
+      "city": "Los Angeles",
+      "state": "CA"
+    },
+    "price": 625000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_feet": 1450,
+    "amenities": ["garage", "backyard", "air conditioning"],
+    "zip_code": "90001",
+    "local_sponsors": [1, 2]
+  },
+  {
+    "property_id": 2,
+    "address": {
+      "street": "840 Sunset Avenue",
+      "city": "Los Angeles",
+      "state": "CA"
+    },
+    "price": 780000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "square_feet": 2100,
+    "amenities": ["garage", "pool", "solar panels"],
+    "zip_code": "90026",
+    "local_sponsors": [2]
+  },
+  {
+    "property_id": 3,
+    "address": {
+      "street": "311 Pine Road",
+      "city": "Pasadena",
+      "state": "CA"
+    },
+    "price": 550000,
+    "bedrooms": 2,
+    "bathrooms": 1.5,
+    "square_feet": 1100,
+    "amenities": ["patio", "central heating"],
+    "zip_code": "91101",
+    "local_sponsors": [1]
+  },
+  {
+    "property_id": 4,
+    "address": {
+      "street": "902 Ocean View Drive",
+      "city": "Long Beach",
+      "state": "CA"
+    },
+    "price": 910000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "square_feet": 1800,
+    "amenities": ["balcony", "garage", "ocean view"],
+    "zip_code": "90802",
+    "local_sponsors": [3]
+  },
+  {
+    "property_id": 5,
+    "address": {
+      "street": "455 Cedar Lane",
+      "city": "Glendale",
+      "state": "CA"
+    },
+    "price": 695000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_feet": 1600,
+    "amenities": ["fireplace", "backyard"],
+    "zip_code": "91205",
+    "local_sponsors": [1, 3]
+  }
+]
