@@ -1,0 +1,109 @@
+[
+{
+"property_id": 1,
+"address": {
+"street": "123 Maple Street",
+"city": "Springfield",
+"state": "IL"
+},
+"price": 250000.0,
+"bedrooms": 3,
+"bathrooms": 2.0,
+"square_feet": 1500,
+"amenities": [
+"pool",
+"parking",
+"balcony"
+],
+"zip_code": "62701",
+"local_sponsors": [
+101,
+102
+]
+},
+{
+"property_id": 2,
+"address": {
+"street": "456 Oak Avenue",
+"city": "Shelbyville",
+"state": "IL"
+},
+"price": 310000.5,
+"bedrooms": 4,
+"bathrooms": 2.5,
+"square_feet": 2100,
+"amenities": [
+"in_unit_laundry",
+"parking"
+],
+"zip_code": "62565",
+"local_sponsors": [
+103
+]
+},
+{
+"property_id": 3,
+"address": {
+"street": "789 Pine Road",
+"city": "Capital City",
+"state": "IL"
+},
+"price": 185000.0,
+"bedrooms": 2,
+"bathrooms": 1.0,
+"square_feet": 950,
+"amenities": [
+"ac",
+"dishwasher"
+],
+"zip_code": "62704",
+"local_sponsors": [
+101,
+104,
+105
+]
+},
+{
+"property_id": 4,
+"address": {
+"street": "321 Elm Boulevard",
+"city": "Ogdenville",
+"state": "IL"
+},
+"price": 420000.0,
+"bedrooms": 5,
+"bathrooms": 3.0,
+"square_feet": 2800,
+"amenities": [
+"pool",
+"yard",
+"fireplace",
+"parking"
+],
+"zip_code": "61877",
+"local_sponsors": [
+102,
+106
+]
+},
+{
+"property_id": 5,
+"address": {
+"street": "654 Birch Lane",
+"city": "North Haverbrook",
+"state": "IL"
+},
+"price": 145000.0,
+"bedrooms": 1,
+"bathrooms": 1.0,
+"square_feet": 650,
+"amenities": [
+"ac",
+"balcony"
+],
+"zip_code": "62613",
+"local_sponsors": [
+107
+]
+}
+]
