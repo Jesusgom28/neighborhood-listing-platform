@@ -1,0 +1,62 @@
+[
+  {
+    "address": {
+      "street": "100 Test Street",
+      "city": "Los Angeles",
+      "state": "CA"
+    },
+    "price": 500000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_feet": 1500,
+    "amenities": ["garage"],
+    "zip_code": "90001",
+    "local_sponsors": [1]
+  },
+  {
+    "property_id": 102,
+    "address": {
+      "street": "200 Test Avenue",
+      "city": "Los Angeles",
+      "state": "CA"
+    },
+    "price": -250000,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "square_feet": 1000,
+    "amenities": ["patio"],
+    "zip_code": "90002",
+    "local_sponsors": [2]
+  },
+  {
+    "property_id": 103,
+    "address": {
+      "street": "300 Test Road",
+      "city": "Pasadena",
+      "state": "CA"
+    },
+    "price": 650000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "square_feet": 2000,
+    "amenities": ["pool"],
+    "zip_code": "BADZIP",
+    "local_sponsors": [1]
+  },
+  {
+    "property_id": 104,
+    "address": {
+      "street": "400 Test Lane",
+      "city": "Glendale",
+      "state": "CA"
+    },
+    "price": 700000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_feet": 1700,
+    "amenities": ["backyard"],
+    "zip_code": "91205",
+    "local_sponsors": [3],
+    "secret_field": "This field should not be allowed"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/property.schema.json",
+  "title": "Property Listing",
+  "description": "Schema for a fictional neighborhood property listing.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "property_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "street": {
+          "type": "string",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      },
+      "required": ["street", "city", "state"]
+    },
+    "price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "bedrooms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bathrooms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "square_feet": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "amenities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "zip_code": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "local_sponsors": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "property_id",
+    "address",
+    "price",
+    "bedrooms",
+    "bathrooms",
+    "square_feet",
+    "amenities",
+    "zip_code",
+    "local_sponsors"
+  ]
+}
