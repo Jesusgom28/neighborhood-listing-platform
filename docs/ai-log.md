@@ -75,3 +75,47 @@ Keyboard navigation was manually tested using Tab and Shift+Tab. Responsive beha
 0382e86 - Add accessible property search filters  
 b7751ba - Add responsive property listing page  
 d1148b0 - Improve component color contrast and accessibility
+
+
+
+
+### Gemini — Stakeholder Interview Question Review
+
+**Date:** October 10, 2026
+
+**Prompt:** Review these eight stakeholder discovery questions for leading wording, privacy-invasive requests, assumptions, and bias. Recommend neutral alternatives. Do not invent stakeholder answers.
+
+**Useful Output:**
+
+Gemini evaluated the eight interview questions and identified several areas for improvement:
+
+- Question 2 focused too heavily on time rather than other workflow challenges.
+- Question 3 assumed that stakeholder information was always publicly published.
+- Question 5 assumed stakeholders already had a formal content approval process.
+- Question 6 assumed stakeholders measured success specifically through listings or promotions.
+- Question 8 could better address technical limitations and workflow changes.
+
+Gemini recommended more neutral wording that allows stakeholders to describe their actual experiences without being guided toward specific answers.
+
+**Accepted Changes:**
+
+- Expanded Question 2 to include workflow challenges beyond time.
+- Updated Question 3 to include shared or distributed information.
+- Revised Question 5 to avoid assuming a formal approval process.
+- Broadened Question 6 to address general measures of success.
+- Expanded Question 8 to include technical constraints and adoption challenges.
+
+**Rejected or Modified Output:**
+
+- Did not adopt Gemini's suggestion to tailor the questions toward IT managers or unrelated business leaders because the project focuses on property professionals and local sponsors.
+- Kept the questions focused on the two stakeholder groups identified in the assignment.
+
+**Verification:**
+
+Compared Gemini's recommendations against the original eight questions and the assignment requirements.
+
+Confirmed that the revised questions remain open-ended and cover workflow, audience, content approval, success measures, and accessibility.
+
+No stakeholder responses were generated or treated as real interview evidence.
+
+**Status:** Gemini critique completed and reviewed.
