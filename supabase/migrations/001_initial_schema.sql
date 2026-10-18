@@ -80,8 +80,15 @@ CREATE INDEX idx_inquiries_property
 
 -- Deny client access until explicit grants and
 -- RLS policies are configured in Migration 002.
-REVOKE ALL ON ALL TABLES IN SCHEMA public
-    FROM anon, authenticated;
+
+REVOKE ALL ON TABLE
+    public.profiles,
+    public.properties,
+    public.sponsors,
+    public.property_sponsors,
+    public.inquiries
+FROM anon, authenticated;
+
 
 -- Enable RLS immediately, not after deployment.
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
