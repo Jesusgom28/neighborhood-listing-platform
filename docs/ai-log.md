@@ -75,3 +75,11 @@ Keyboard navigation was manually tested using Tab and Shift+Tab. Responsive beha
 0382e86 - Add accessible property search filters  
 b7751ba - Add responsive property listing page  
 d1148b0 - Improve component color contrast and accessibility
+
+
+**Exam**
+# AI Provenance Journal
+
+| Step / Tool | Prompt Summary | Model Output Used | Model Output Rejected & Rationale | Verification Method | Associated Git Commit |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Part 1 / ChatGPT | Requested step-by-step assistance preparing the CIS 3610 examination repository and verifying Git configuration. | Git commands for checking repository status, creating the examination branch, and verifying .gitignore rules. | No generated application code accepted during this step. | Confirmed clean examination branch with git status; reviewed .gitignore and tested ignore rules. | Pending |
