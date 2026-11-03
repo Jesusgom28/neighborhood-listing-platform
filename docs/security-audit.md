@@ -70,3 +70,41 @@ Successful SQL execution confirms that the statements were accepted. It does not
 ### Conclusion
 
 The examination database schema and initial RLS policies have been applied successfully. Authorization testing and final security verification remain pending.
+
+
+
+## API Verification Results — November 2, 2026
+
+The following tests were performed against the examination
+Supabase project using the Next.js property API.
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Public GET /api/properties | 200 | 200, empty properties array | PASS |
+| POST without authentication | 401 | 401 Authentication required | PASS |
+| Authenticated property owner POST | 201 | 201, property draft created | PASS |
+| POST with negative price | 400 | 400, price validation error | PASS |
+
+### Property Creation Evidence
+
+An authenticated test owner successfully created a property.
+
+Property ID:
+572d84b2-aecb-4e00-8bbd-afbf97ed9cbe
+
+### Validation Evidence
+
+A negative price of -100 was rejected with HTTP 400.
+
+Response:
+Property validation failed — Price cannot be negative.
+
+### Remaining Security Tests
+
+- Verify that Owner A cannot modify Owner B's property.
+- Verify that anonymous users cannot read draft properties.
+- Verify that owners cannot approve their own properties.
+- Verify inquiry access restrictions.
+- Verify authorized administrative operations.
+
+These remaining tests have not yet been marked as passed.

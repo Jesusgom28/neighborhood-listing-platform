@@ -83,3 +83,35 @@ d1148b0 - Improve component color contrast and accessibility
 | Step / Tool | Prompt Summary | Model Output Used | Model Output Rejected & Rationale | Verification Method | Associated Git Commit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Part 1 / ChatGPT | Requested step-by-step assistance preparing the CIS 3610 examination repository and verifying Git configuration. | Git commands for checking repository status, creating the examination branch, and verifying .gitignore rules. | No generated application code accepted during this step. | Confirmed clean examination branch with git status; reviewed .gitignore and tested ignore rules. | Pending |
+
+
+
+## Practical Examination — Part 5: API Implementation
+
+### AI Assistance Used
+ChatGPT was used to help:
+- Identify differences between the original lab database and the examination schema.
+- Create a Zod validation schema for property submissions.
+- Adapt the existing Next.js property API to the examination database.
+- Troubleshoot the Supabase API key configuration.
+- Prepare tests for authentication, property creation, and validation.
+
+### Implementation Decisions
+- Preserved the original AJV validator for earlier coursework.
+- Added a separate Zod schema for examination requirements.
+- Reused the existing Supabase authentication approach.
+- Used the authenticated user's access token for property insertion so RLS remains enforced.
+- Kept database credentials in the local environment configuration.
+
+### Verification Performed
+- TypeScript check: PASS (`npx tsc --noEmit`).
+- Public GET request: PASS.
+- Unauthenticated POST: PASS (HTTP 401).
+- Authenticated property creation: PASS (HTTP 201).
+- Negative price validation: PASS (HTTP 400).
+
+### Remaining Work
+- Complete cross-owner RLS tests.
+- Verify administrative permissions.
+- Review other API routes for examination database compatibility.
+- Complete accessible property card requirements.
