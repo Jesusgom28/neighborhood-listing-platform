@@ -12,7 +12,11 @@ export async function POST(
 ) {
   const { id } = await context.params;
 
-  if (!/^[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id))) {
+  // Examination properties use UUID identifiers.
+  const uuidPattern =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+  if (!uuidPattern.test(id)) {
     return NextResponse.json(
       { error: "Invalid property ID" },
       { status: 400 }
@@ -30,7 +34,7 @@ export async function POST(
     );
   }
 
-  // Require a valid user access token.
+  // Require an authenticated user.
   const authorization = request.headers.get("authorization");
   const match = authorization?.match(/^Bearer\s+(\S+)$/i);
 
@@ -60,8 +64,7 @@ export async function POST(
     );
   }
 
-  // Server-only privileged client.
-  // Never expose this key to the browser.
+  // Privileged client remains server-side only.
   const adminClient = createClient(supabaseUrl, secretKey, {
     auth: {
       persistSession: false,
@@ -69,11 +72,11 @@ export async function POST(
     },
   });
 
-  // Check the verified user's administrator status.
+  // Verify the authenticated user's role.
   const { data: profile, error: profileError } = await adminClient
     .from("profiles")
-    .select("is_admin")
-    .eq("user_id", authData.user.id)
+    .select("role")
+    .eq("id", authData.user.id)
     .maybeSingle();
 
   if (profileError) {
@@ -85,20 +88,20 @@ export async function POST(
     );
   }
 
-  if (profile?.is_admin !== true) {
+  if (profile?.role !== "admin") {
     return NextResponse.json(
       { error: "Administrator access required" },
       { status: 403 }
     );
   }
 
-  // Only approve a property that is currently unapproved.
+  // Only administrators can approve pending properties.
   const { data, error } = await adminClient
     .from("properties")
-    .update({ is_approved: true })
-    .eq("property_id", Number(id))
-    .eq("is_approved", false)
-    .select("property_id")
+    .update({ status: "approved" })
+    .eq("id", id)
+    .eq("status", "pending")
+    .select("id")
     .maybeSingle();
 
   if (error) {
@@ -112,13 +115,13 @@ export async function POST(
 
   if (!data) {
     return NextResponse.json(
-      { error: "Unapproved property not found" },
+      { error: "Pending property not found" },
       { status: 404 }
     );
   }
 
   return NextResponse.json({
     message: "Property approved successfully",
-    property_id: data.property_id,
+    property_id: data.id,
   });
 }

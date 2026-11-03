@@ -108,3 +108,41 @@ Property validation failed — Price cannot be negative.
 - Verify authorized administrative operations.
 
 These remaining tests have not yet been marked as passed.
+
+
+
+### Additional RLS Verification — November 2, 2026
+
+| Test | Expected Result | Actual Result | Status |
+|---|---|---|---|
+| Owner B reads Owner A's draft | 0 visible records | 0 records | PASS |
+| Owner B updates Owner A's draft | 0 updated records | 0 records | PASS |
+| Owner A attempts to approve own draft | RLS rejection | PostgreSQL error 42501 | PASS |
+
+The tests used simulated authenticated user identities in the Supabase SQL Editor.
+
+The approval attempt was rejected with:
+"new row violates row-level security policy for table properties"
+
+The tests do not yet establish that all RLS policies are secure.
+
+
+
+### Inquiry Security Verification
+
+| Test | Actual Result | Status |
+|---|---|---|
+| Anonymous inquiry submission for approved property | INSERT completed without error | PASS |
+| Anonymous user attempts to read inquiries | PostgreSQL error 42501: permission denied | PASS |
+
+The inquiry tests used the Supabase SQL Editor with
+the anonymous database role.
+
+Anonymous users were permitted to submit inquiries
+about approved properties but were denied SELECT
+access to private inquiry records.
+
+Administrative authorization and authenticated
+cross-owner inquiry access still require verification.
+
+
