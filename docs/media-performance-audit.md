@@ -98,6 +98,40 @@ These are preliminary local measurements, not
 production benchmarks or real-device mobile tests.
 
 
+## Verified Responsive Image Dimensions
+
+Measurements collected using Chrome DevTools Console
+and getBoundingClientRect().
+
+| Asset | Mobile 390px | Desktop 1280px |
+|---|---|---|
+| house-1.svg | 340 x 192px | 393 x 192px |
+| house-2.svg | 340 x 192px | 393 x 192px |
+| house-3.svg | 340 x 192px | 393 x 192px |
+| sponsor-banner.svg | 340 x 113px | 1230 x 410px |
+| home-icon.svg | 40 x 40px | 40 x 40px |
+
+## Verified Network Content Types
+
+| Asset | Content-Type |
+|---|---|
+| house-1.svg | image/svg+xml |
+| sponsor-banner.svg | image/svg+xml |
+| home-icon.svg | image/svg+xml |
+
+All three asset categories returned HTTP 200.
+
+## Responsive Optimization
+
+- Property images use Next.js Image with responsive sizes
+  and Tailwind object-cover styling.
+- The sponsor banner uses Next.js Image with an intrinsic
+  1200 x 400 aspect ratio and responsive width.
+- The homepage icon uses Next.js Image with fixed dimensions.
+- The decorative icon uses alt="" to avoid redundant
+  screen-reader announcements.
+
+
 ## Limitations
 
 - Results were measured on a local development server.
