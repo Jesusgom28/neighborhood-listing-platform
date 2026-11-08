@@ -10,9 +10,10 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     <article className="overflow-hidden rounded-lg border bg-white text-gray-900 shadow-sm">
       <Image
         src={property.imageUrl}
-        alt={`${property.title} at ${property.address}, ${property.city}`}
+        alt={`Illustration representing ${property.title}`}
         width={600}
         height={400}
+        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
         className="h-48 w-full object-cover"
       />
 
