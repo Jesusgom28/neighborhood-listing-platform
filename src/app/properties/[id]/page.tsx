@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { notFound } from "next/navigation";
 import SponsorPlacement from "@/components/SponsorPlacement";
 import SponsorImpressionTracker from "@/components/SponsorImpressionTracker";
+import { getApprovedSponsorCopy } from "@/lib/getApprovedSponsorCopy";
 import {
   selectSponsor,
   type SponsorCandidate,
@@ -20,6 +21,7 @@ export default async function PropertyDetailPage({
 }: PageProps) {
   const { id } = await params;
 
+  // Validate the property ID.
   if (!/^[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id))) {
     notFound();
   }
@@ -33,6 +35,7 @@ export default async function PropertyDetailPage({
 
   const supabase = createClient(supabaseUrl, supabaseKey);
 
+  // Retrieve only approved properties.
   const { data: property, error: propertyError } = await supabase
     .from("properties")
     .select(
@@ -53,6 +56,7 @@ export default async function PropertyDetailPage({
   const today = new Date().toISOString().slice(0, 10);
   const placement = "PROPERTY_DETAIL";
 
+  // Retrieve sponsors eligible for this property.
   const { data: sponsors, error: sponsorError } = await supabase
     .from("sponsors")
     .select(
@@ -69,6 +73,7 @@ export default async function PropertyDetailPage({
     throw new Error("Unable to retrieve sponsors");
   }
 
+  // Preserve deterministic sponsor selection.
   const selectedSponsor = selectSponsor(
     {
       zipCode: property.zip_code,
@@ -77,6 +82,11 @@ export default async function PropertyDetailPage({
     },
     (sponsors ?? []) as SponsorCandidate[]
   );
+
+  // Retrieve only human-approved promotional text.
+  const approvedCopy = selectedSponsor
+    ? await getApprovedSponsorCopy(selectedSponsor.sponsor_id)
+    : null;
 
   const address = property.address as {
     street?: string;
@@ -112,7 +122,10 @@ export default async function PropertyDetailPage({
       <section className="mt-10" aria-label="Local sponsor">
         {selectedSponsor ? (
           <SponsorImpressionTracker propertyId={property.property_id}>
-            <SponsorPlacement sponsor={selectedSponsor} />
+            <SponsorPlacement
+              sponsor={selectedSponsor}
+              approvedCopy={approvedCopy}
+            />
           </SponsorImpressionTracker>
         ) : (
           <SponsorPlacement sponsor={null} />

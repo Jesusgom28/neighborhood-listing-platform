@@ -9,9 +9,11 @@ export interface Property {
   imageUrl: string;
 }
 
+
 export interface Sponsor {
   id: number;
   name: string;
   message: string;
   url: string;
+  imageUrl?: string;
 }

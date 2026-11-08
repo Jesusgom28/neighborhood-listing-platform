@@ -2,6 +2,7 @@ import PropertyCard from "@/components/PropertyCard";
 import SearchFilters from "@/components/SearchFilters";
 import SponsorBanner from "@/components/SponsorBanner";
 import type { Property, Sponsor } from "@/types";
+import Image from "next/image";
 
 const properties: Property[] = [
   {
@@ -41,17 +42,34 @@ const sponsor: Sponsor = {
   name: "Neighborhood Home Services",
   message: "Helping local residents with their home service needs.",
   url: "https://example.com",
+  imageUrl: "/sponsor-banner.svg",
 };
+
 
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl p-6">
+      
       <header>
-        <h1 className="text-3xl font-bold">Neighborhood Listings</h1>
+        <div className="flex items-center gap-3">          
+          <Image
+            src="/home-icon.svg"
+            alt=""
+            width={48}
+            height={48}
+            className="h-10 w-10 shrink-0"
+          />
+
+          <h1 className="text-3xl font-bold">
+            Neighborhood Listings
+          </h1>
+        </div>
+
         <p className="mt-2 text-gray-300">
           Find a home in your neighborhood.
         </p>
       </header>
+
 
       <section className="mt-8">
         <SearchFilters />
