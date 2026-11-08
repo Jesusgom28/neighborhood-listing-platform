@@ -3,10 +3,12 @@ import type { SponsorCandidate } from "@/lib/selectSponsor";
 
 interface SponsorPlacementProps {
   sponsor: SponsorCandidate | null;
+  approvedCopy?: string | null;
 }
 
 export default function SponsorPlacement({
   sponsor,
+  approvedCopy = null,
 }: SponsorPlacementProps) {
   if (!sponsor) {
     return (
@@ -42,6 +44,12 @@ export default function SponsorPlacement({
       <h2 className="text-lg font-semibold">
         {sponsor.business_name}
       </h2>
+
+      {approvedCopy && (
+        <p className="mt-2 text-sm">
+          {approvedCopy}
+        </p>
+      )}
 
       <a
         href={`/api/sponsors/${sponsor.sponsor_id}/click`}
