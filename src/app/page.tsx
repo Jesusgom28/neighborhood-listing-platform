@@ -41,7 +41,9 @@ const sponsor: Sponsor = {
   name: "Neighborhood Home Services",
   message: "Helping local residents with their home service needs.",
   url: "https://example.com",
+  imageUrl: "/sponsor-banner.svg",
 };
+
 
 export default function Home() {
   return (
