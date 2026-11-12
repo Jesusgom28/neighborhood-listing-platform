@@ -14,4 +14,5 @@ export interface Sponsor {
   name: string;
   message: string;
   url: string;
+  imageUrl?: string;
 }

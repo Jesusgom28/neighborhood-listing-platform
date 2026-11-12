@@ -1,0 +1,27 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="48"
+     height="48"
+     viewBox="0 0 48 48"
+     fill="none">
+  <path
+    d="M5 23L24 7L43 23"
+    stroke="#60A5FA"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M10 21V41H38V21"
+    stroke="#60A5FA"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M20 41V29H28V41"
+    stroke="#60A5FA"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+</svg>
