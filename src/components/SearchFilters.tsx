@@ -1,16 +1,36 @@
-export default function SearchFilters() {
+
+interface SearchFiltersProps {
+  bedrooms?: string;
+  maxPrice?: string;
+}
+
+export default function SearchFilters({
+  bedrooms = "",
+  maxPrice = "",
+}: SearchFiltersProps) {
   return (
-    <form className="rounded-lg border bg-gray-50 p-4 text-gray-900">
-      <h2 className="text-lg font-semibold">Search Filters</h2>
+    <form
+      method="GET"
+      action="/"
+      className="rounded-lg border bg-gray-50 p-4 text-gray-900"
+    >
+      <h2 className="text-lg font-semibold">
+        Search Filters
+      </h2>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <div>
-          <label htmlFor="bedrooms" className="block font-medium">
+          <label
+            htmlFor="bedrooms"
+            className="block font-medium"
+          >
             Bedrooms
           </label>
+
           <select
             id="bedrooms"
             name="bedrooms"
+            defaultValue={bedrooms}
             className="mt-1 w-full rounded border p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
             <option value="">Any</option>
@@ -21,12 +41,17 @@ export default function SearchFilters() {
         </div>
 
         <div>
-          <label htmlFor="maxPrice" className="block font-medium">
+          <label
+            htmlFor="maxPrice"
+            className="block font-medium"
+          >
             Maximum price
           </label>
+
           <select
             id="maxPrice"
             name="maxPrice"
+            defaultValue={maxPrice}
             className="mt-1 w-full rounded border p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
             <option value="">Any price</option>

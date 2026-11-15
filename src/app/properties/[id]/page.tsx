@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { notFound } from "next/navigation";
 import SponsorPlacement from "@/components/SponsorPlacement";
 import SponsorImpressionTracker from "@/components/SponsorImpressionTracker";
+import InquiryForm from "@/components/InquiryForm";
 import {
   selectSponsor,
   type SponsorCandidate,
@@ -118,6 +119,9 @@ export default async function PropertyDetailPage({
           <SponsorPlacement sponsor={null} />
         )}
       </section>
+
+      {/* Allow visitors to contact the property owner. */}
+      <InquiryForm propertyId={property.property_id} />
     </main>
   );
 }
