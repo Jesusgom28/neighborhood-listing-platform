@@ -66,10 +66,7 @@ enabled = true
 schema_paths = []
 
 [db.seed]
-# Disable automatic seeding because this project
-# does not currently include a seed.sql file.
-# Database migrations remain enabled separately.
-enabled = false
+enabled = true
 sql_paths = ["./seed.sql"]
 
 [db.network_restrictions]

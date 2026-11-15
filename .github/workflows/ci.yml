@@ -1,5 +1,5 @@
 
-name: CI - Lint, Test, and Build
+name: CI - Lint, Test, Build, and E2E
 
 on:
   pull_request:
@@ -27,8 +27,72 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      - name: Run tests
+      - name: Run unit tests
         run: npm test
+
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start local Supabase
+        run: supabase start
+
+      - name: Configure local test environment
+        shell: bash
+        run: |
+          supabase status -o env > /tmp/supabase-ci.env
+
+          anon_key=$(grep '^ANON_KEY=' /tmp/supabase-ci.env | cut -d= -f2- | tr -d '"')
+          service_key=$(grep '^SERVICE_ROLE_KEY=' /tmp/supabase-ci.env | cut -d= -f2- | tr -d '"')
+          test_password=$(openssl rand -hex 18)
+
+          test -n "$anon_key"
+          test -n "$service_key"
+
+          echo "::add-mask::$service_key"
+          echo "::add-mask::$test_password"
+
+          {
+            echo "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321"
+            echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$anon_key"
+            echo "SUPABASE_SERVICE_ROLE_KEY=$service_key"
+            echo "PLAYWRIGHT_TEST_EMAIL=lab8-ci@example.com"
+            echo "PLAYWRIGHT_TEST_PASSWORD=$test_password"
+          } >> "$GITHUB_ENV"
+
+      - name: Create CI authentication user and property
+        run: node scripts/setup-ci-user.mjs
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Build application
         run: npm run build
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
